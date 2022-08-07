@@ -1,0 +1,17 @@
+import speech_recognition as sr
+AUDIO_FILE=(r"C:\Users\Hp\Music\AudioLabRecording_12-12-21_09-08-26-924.wav")
+#use tha udio file as source
+
+r=sr.Recognizer()  #initilise the recognizer
+
+with sr.AudioFile(AUDIO_FILE) as source:
+    audio=r.record(source)
+#reads the audio file
+try:
+    print("audio file contains :" + r.recognize_google(audio))
+except sr.UnknownValueError:
+    print("Google Speech Recognition could not understand audio")
+except sr.RequestError:
+    print("coudnt get the result from Google Speech Recognition")
+    
+          
